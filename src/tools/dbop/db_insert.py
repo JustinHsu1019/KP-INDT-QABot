@@ -71,7 +71,7 @@ if __name__ == '__main__':
     """ insert data to weaviate (Template)"""
     manager = WeaviateManager("kpit")
 
-    with open('data/File_6328.txt', encoding='utf-8') as file:
+    with open('data/柯姓被告等新聞資料.txt', encoding='utf-8') as file:
         content = file.read()
 
     # new_cp = content.split('femh')
