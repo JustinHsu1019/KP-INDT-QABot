@@ -82,3 +82,4 @@ if __name__ == '__main__':
 
     for lines in new_cp:
         manager.insert_data("", lines)
+        print("單筆資料：" + lines)
