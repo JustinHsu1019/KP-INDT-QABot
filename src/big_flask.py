@@ -1,11 +1,10 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request
 from linebot import LineBotApi, WebhookHandler
 from linebot.exceptions import InvalidSignatureError
 from linebot.models import (
-    RichMenu, RichMenuArea, RichMenuBounds, RichMenuSize,
-    URIAction, MessageAction, MessageEvent, TextMessage, TextSendMessage
+    MessageEvent, TextMessage, TextSendMessage
 )
-import datetime
+from datetime import datetime
 import tools.utils.config_log as config_log
 import tools.chatbot as chatbot
 
