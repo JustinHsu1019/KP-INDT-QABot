@@ -2,6 +2,7 @@ import time
 import uuid
 import sys
 import os
+from tqdm import tqdm
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 import utils.config_log as config_log
@@ -69,17 +70,15 @@ class WeaviateManager:
 
 if __name__ == '__main__':
     """ insert data to weaviate (Template)"""
-    manager = WeaviateManager("kpit")
+    manager = WeaviateManager("kpitprod")
 
     with open('data/柯姓被告等新聞資料.txt', encoding='utf-8') as file:
         content = file.read()
 
-    # new_cp = content.split('femh')
-    # 因為 merged_output.txt 沒有用 'femh' 預先分好
-    # 所以需要用 langchain 的 textsplitter 來切分，設定 Tokens 2000, overlap=500
+    # 用 langchain 的 textsplitter 來切分，設定 Tokens 2000, overlap=500
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=2000, chunk_overlap=500)
     new_cp = text_splitter.split_text(content)
 
-    for lines in new_cp:
+    for lines in tqdm(new_cp, desc="Uploading data to Weaviate"):
         manager.insert_data("", lines)
         print("單筆資料：" + lines)

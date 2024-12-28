@@ -61,7 +61,7 @@ class WeaviateSemanticSearch:
 
 
 def search_do(input_, alp):
-    searcher = WeaviateSemanticSearch("Kpit")
+    searcher = WeaviateSemanticSearch("Kpitprod")
     results = searcher.hybrid_search(input_, 3, alpha=alp)
 
     result_li = []
@@ -72,7 +72,7 @@ def search_do(input_, alp):
 
 
 if __name__ == '__main__':
-    vdb = "Kpit"
+    vdb = "Kpitprod"
     client = WeaviateSemanticSearch(vdb)
 
     # 統計筆數
